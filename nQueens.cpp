@@ -10,14 +10,13 @@
 
 using namespace std;
 
-bool Row(int **arr, int curr, int r, int c){
-    if(c == curr || arr[r][c] == 1)
+bool DownLeft(int **arr, int curr, int r, int c){
+    if(c < 0 || r == curr || arr[r][c] == 1)
         return false;
-    else if((c == curr - 1) && arr[r][c] == 0)
+    else if((c == 0 || r == curr - 1) && arr[r][c] == 0)
         return true;
     
-    return Row(arr, curr, r, ++c);
-
+    return DownLeft(arr, curr, ++r, --c);
 }
 
 bool UpLeft(int **arr, int curr, int r, int c){
@@ -27,17 +26,15 @@ bool UpLeft(int **arr, int curr, int r, int c){
         return true;
     
     return UpLeft(arr, curr, --r, --c);
-
 }
 
-bool DownLeft(int **arr, int curr, int r, int c){
-    if(c < 0 || r == curr || arr[r][c] == 1)
+bool Row(int **arr, int curr, int r, int c){
+    if(c == curr || arr[r][c] == 1)
         return false;
-    else if((c == 0 || r == curr - 1) && arr[r][c] == 0)
+    else if((c == curr - 1) && arr[r][c] == 0)
         return true;
     
-    return DownLeft(arr, curr, ++r, --c);
-
+    return Row(arr, curr, r, ++c);
 }
 
 int findQueens(int **arr, int curr, int c){
