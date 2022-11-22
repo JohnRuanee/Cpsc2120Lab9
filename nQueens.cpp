@@ -15,8 +15,8 @@ bool Row(int **arr, int curr, int r, int c){
         return false;
     else if((c == curr - 1) && arr[r][c] == 0)
         return true;
-    else
-        return Row(arr, curr, r, c + 1);
+    
+    return Row(arr, curr, r, ++c);
 
 }
 
@@ -25,8 +25,8 @@ bool UpLeft(int **arr, int curr, int r, int c){
         return false;
     else if((c == 0 || r == 0) && arr[r][c] == 0)
         return true;
-    else
-        return UpLeft(arr, curr, r - 1, c - 1);
+    
+    return UpLeft(arr, curr, --r, --c);
 
 }
 
@@ -35,8 +35,8 @@ bool DownLeft(int **arr, int curr, int r, int c){
         return false;
     else if((c == 0 || r == curr - 1) && arr[r][c] == 0)
         return true;
-    else
-        return UpLeft(arr, curr, r + 1, c - 1);
+    
+    return UpLeft(arr, curr, ++r, --c);
 
 }
 
