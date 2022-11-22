@@ -36,7 +36,7 @@ bool DownLeft(int **arr, int curr, int r, int c){
     else if((c == 0 || r == curr - 1) && arr[r][c] == 0)
         return true;
     
-    return UpLeft(arr, curr, ++r, --c);
+    return DownLeft(arr, curr, ++r, --c);
 
 }
 
